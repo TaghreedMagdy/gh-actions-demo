@@ -1,14 +1,36 @@
-name: first workflow
+# name: first workflow
+# on:
+#   push:
+#     branches:
+#       - "main"
+
+# jobs:
+#   bash-job:
+#     name: run-bash-command
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: run-bash
+#         run: echo "Hello workflow"
+#         shell: bash
+
+name: workflow pracice
 on:
   push:
     branches:
       - "main"
 
 jobs:
-  bash-job:
-    name: run-bash-command
+  list-before-clone:
+    name: list items before checkout
     runs-on: ubuntu-latest
     steps:
-      - name: run-bash
-        run: echo "Hello workflow"
+      - name: list items
+        run: ls
+        shell: bash
+
+      - name: make the checkout action
+        uses: actions/checkout@v3
+
+      - name: list after checkout
+        run: ls
         shell: bash
